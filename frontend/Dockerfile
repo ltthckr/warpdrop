@@ -14,6 +14,10 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# ประกาศรับค่าจาก Environment ของ Render ในช่วง Build-time
+ARG NEXT_PUBLIC_WS_URL
+ENV NEXT_PUBLIC_WS_URL=$NEXT_PUBLIC_WS_URL
+
 RUN bun run build
 
 FROM oven/bun:alpine AS runner
